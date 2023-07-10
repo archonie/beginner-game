@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
     public float speed;
     private Vector3 direction;
     private Rigidbody rb;
-    public float minDirection = 0.5f;
+    public float minDirection = 0.7f;
 
     // Start is called before the first frame update
     void Start()
