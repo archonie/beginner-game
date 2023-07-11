@@ -10,19 +10,24 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     public float minDirection = 0.7f;
 
+    private bool stopped = false;
+
     // Start is called before the first frame update
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
-        ChooseDirection();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        
     }
     void FixedUpdate() {
+        if(stopped){
+            return;
+        }
         this.rb.MovePosition(this.rb.position + direction * speed * Time.fixedDeltaTime);
     }
     private void OnTriggerEnter(Collider other) {
@@ -44,12 +49,14 @@ public class BallController : MonoBehaviour
         float signZ = Mathf.Sign(Random.Range(-1f,1f));
         this.direction = new Vector3(0.5f *signX , 0f, 0.5f*signZ);
     }
-    // public void Stop() {
-    //     stopped = true;
-    // }
+    public void Stop() {
+       stopped = true;
+    }
 
-    // public void Go() {
-    //     stopped = false;
-    // }
+    public void Go() {
+        ChooseDirection();
+        stopped = false;
+        
+    }
 
 }
