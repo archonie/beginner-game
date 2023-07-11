@@ -101,7 +101,6 @@ public class GameController : MonoBehaviour
         this.ballController.Stop();
         this.ball.transform.position = this.startingPosition;
         this.ballController.Go();
-
     }
     
 }
