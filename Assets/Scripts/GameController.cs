@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     private BallController ballController;
     private Vector3 startingPosition;
     public TMP_Text endGameText;
+    public TMP_Text tap2Start;
     private bool isTapped = false;
     void Start()
     {
@@ -76,20 +77,24 @@ public class GameController : MonoBehaviour
     private void UpdateUI(){
         if(scoreLeft <5 || scoreRight <5){
             this.endGameText.text = "";
+            this.tap2Start.text = "";
+            scoreTextLeft.text = this.scoreLeft.ToString();
+            scoreTextRight.text = this.scoreRight.ToString();
         }
         if(scoreLeft == 5){
             endGameText.text = "YOU WIN!";
-            scoreTextLeft.text = this.scoreLeft.ToString();
-            scoreTextRight.text = this.scoreRight.ToString();
+            tap2Start.text = "Tap to start again!";
+            scoreTextLeft.text = "";
+            scoreTextRight.text = "";
         }
         if(scoreRight==5){
             endGameText.text = "COMPUTER WINS!";
-            scoreTextLeft.text = this.scoreLeft.ToString();
-            scoreTextRight.text = this.scoreRight.ToString();
+            tap2Start.text = "Tap to start again!";
+            scoreTextLeft.text = "";
+            scoreTextRight.text = "";
         }
         
-        scoreTextLeft.text = this.scoreLeft.ToString();
-        scoreTextRight.text = this.scoreRight.ToString();
+        
 
     }
     private void ResetBall(){
