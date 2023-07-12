@@ -18,10 +18,13 @@ public class GameController : MonoBehaviour
     public TMP_Text endGameText;
     public TMP_Text tap2Start;
     private bool isTapped = false;
+    public GameObject sManager;
+    private SpawnManager spawnManager;
     void Start()
     {
         this.ballController = this.ball.GetComponent<BallController>();
         this.startingPosition = this.ball.transform.position;
+        this.spawnManager =  this.sManager.GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -40,8 +43,13 @@ public class GameController : MonoBehaviour
             UpdateUI();       
             this.isStarted = true;
             this.ballController.Go();
-        }
+            InvokeRepeating("InvokeMethod", 2f, 5f);
+            }
         
+    }
+
+    private void InvokeMethod(){
+        this.spawnManager.Spawn();
     }
     public void StartGameOnTap(){
         StartGame();
@@ -100,7 +108,9 @@ public class GameController : MonoBehaviour
     private void ResetBall(){
         this.ballController.Stop();
         this.ball.transform.position = this.startingPosition;
+        this.spawnManager.DestroyObject();
         this.ballController.Go();
+        isTapped = true;
     }
     
 }

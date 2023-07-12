@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class RacketController : MonoBehaviour
 {
-    public float speed;
+    public float playerSpeed = 10f;
+    public float computerSpeed = 10f;
     private Rigidbody rb;
     public FixedJoystick joystick;
     public bool isPlayer = true;
@@ -27,27 +27,17 @@ public class RacketController : MonoBehaviour
         }
     }
     void MoveByPlayer(){
-        rb.velocity = joystick.Horizontal * speed * Vector3.right;
-        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-        
+        rb.velocity = joystick.Horizontal * playerSpeed * Vector3.right;
     }
     void MoveByComputer(){
         if(ball.position.x < transform.position.x + offset){
-            rb.velocity = Vector3.left * speed;
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-
-
+            rb.velocity = Vector3.left * computerSpeed;
         }
         else if(ball.position.x > transform.position.x - offset){
-            rb.velocity = Vector3.right * speed;
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-
+            rb.velocity = Vector3.right * computerSpeed;
         }
         else{
             rb.velocity = Vector3.zero;
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-            
-            
         }
         
     }

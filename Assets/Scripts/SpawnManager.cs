@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private Prefab[] prefabs;
+    public GameObject[] prefabs;
+    private bool spawned = false;
+    private GameObject prefab;
+    private GameObject powerUp;
+    Vector3 position;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    public void Spawn(){
+        if(!spawned){
+            position = new Vector3(Random.Range(0f,11f), 5f, Random.Range(-9f,6f));
+            prefab = prefabs[Random.Range(0,prefabs.Length)];
+            powerUp = Instantiate(prefab, position, prefab.transform.rotation );
+            spawned = true;
+        }
+    }
+    public void DestroyObject(){
+        Destroy(powerUp);
+        spawned = false;
     }
 }
