@@ -80,12 +80,10 @@ public class BallController : MonoBehaviour
         }
         if(other.CompareTag("speedRacket")){
             if(flag == 1){
-                Debug.Log(this.playerController.playerSpeed);
                 this.playerController.speedUp();
                 this.sManager.DestroyObject();
             }
             if(flag == -1){
-                Debug.Log(this.computerController.computerSpeed);
                 this.computerController.speedUp();
                 this.sManager.DestroyObject();
             }
