@@ -8,17 +8,24 @@ public class BallController : MonoBehaviour
     public float speed;
     private Vector3 direction;
     private Rigidbody rb;
-    public float minDirection = 0.7f;
-
+    public float minDirection = 1f;
+    private Vector3 startPosition;
     private bool stopped = false;
     private int flag = 0;
     public GameObject spawnManager;
     private SpawnManager sManager;
+    public GameObject player;
+    public GameObject computer;
+    private RacketController playerController;
+    private ComputerController computerController;
     // Start is called before the first frame update
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
+        this.startPosition = this.transform.position;
         this.sManager = this.spawnManager.GetComponent<SpawnManager>();
+        this.playerController = this.player.GetComponent<RacketController>();
+        this.computerController = this.computer.GetComponent<ComputerController>();
     }
 
     // Update is called once per frame
@@ -54,29 +61,34 @@ public class BallController : MonoBehaviour
             direction = newDirection;
             flag = 1;
         }
-        if(other.CompareTag("speed")){
-
-            if(flag == 1){
+        if(other.CompareTag("speedBall")){
                 this.speed = this.speed * 1.2f;
-                Debug.Log("Player speed up");
+                Invoke("speedDown", 3f);
                 this.sManager.DestroyObject();
             }
-            if(flag == -1){   
-                this.speed = this.speed * 1.2f;
-                Debug.Log("Computer speed up");
-                this.sManager.DestroyObject();
-            }
-            
-            
-        }
         if(other.CompareTag("freeze")){
             if(flag == 1){
-                Debug.Log("Computer freeze");
+                this.sManager.DestroyObject();
+                this.computerController.freezeComputer();
+                
             }
             if(flag == -1){
-                Debug.Log("Player freeze");
+                this.sManager.DestroyObject();
+                this.playerController.freezePlayer();
             }
 
+        }
+        if(other.CompareTag("speedRacket")){
+            if(flag == 1){
+                Debug.Log(this.playerController.playerSpeed);
+                this.playerController.speedUp();
+                this.sManager.DestroyObject();
+            }
+            if(flag == -1){
+                Debug.Log(this.computerController.computerSpeed);
+                this.computerController.speedUp();
+                this.sManager.DestroyObject();
+            }
         }
     
     }
@@ -95,5 +107,20 @@ public class BallController : MonoBehaviour
         stopped = false;
         
     }
-
+    public void ResetBall(){
+        Stop();
+        this.transform.position = startPosition;
+        this.sManager.DestroyObject();
+        this.computerController.unFreeze();
+        this.playerController.unFreeze();
+        this.playerController.speedDown();
+        this.computerController.speedDown();
+        Invoke("DelayResetBall", 1.3f);
+    }
+    public void DelayResetBall(){
+        Go();
+    }
+    public void speedDown(){
+        this.speed = 20f;
+    }
 }

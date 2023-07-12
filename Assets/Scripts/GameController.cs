@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
             UpdateUI();       
             this.isStarted = true;
             this.ballController.Go();
-            InvokeRepeating("InvokeMethod", 2f, 5f);
+            InvokeRepeating("InvokeMethod", 2.5f, 5f);
             }
         
     }
@@ -106,10 +106,7 @@ public class GameController : MonoBehaviour
 
     }
     private void ResetBall(){
-        this.ballController.Stop();
-        this.ball.transform.position = this.startingPosition;
-        this.spawnManager.DestroyObject();
-        this.ballController.Go();
+        this.ballController.ResetBall();
         isTapped = true;
     }
     

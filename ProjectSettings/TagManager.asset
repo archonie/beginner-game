@@ -9,8 +9,9 @@ TagManager:
   - PowerUp
   - Computer
   - Racket
-  - speed
   - freeze
+  - speedBall
+  - speedRacket
   layers:
   - Default
   - TransparentFX

@@ -349,8 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
+  - {fileID: 1921829667141551523, guid: 4252bc8263bc4b345b85927b4b64f0d6, type: 3}
   - {fileID: 4574520313862115391, guid: 78eed423c17dbc44e9c55502608e31e0, type: 3}
-  - {fileID: 3381598171666890083, guid: 90833af24266d7e43b1b670e511afdda, type: 3}
+  - {fileID: 5114218532312697120, guid: b1509b79e302b3e4d943abd62a7e4aca, type: 3}
 --- !u!4 &226171975
 Transform:
   m_ObjectHideFlags: 0
@@ -508,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 4388004731009325423, guid: 8ba30c583e9114c27ba0c3ee746ab675,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.77
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 4388004731009325423, guid: 8ba30c583e9114c27ba0c3ee746ab675,
         type: 3}
@@ -614,10 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  computerSpeed: 10
   joystick: {fileID: 1231998242}
-  isPlayer: 1
-  offset: 0.7
 --- !u!65 &451360619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -779,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 896183475800663724, guid: a24d2f7cf460541c99ea401ab475caa4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.01
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 896183475800663724, guid: a24d2f7cf460541c99ea401ab475caa4,
         type: 3}
@@ -997,14 +995,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 723826348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512cf0ae04eb2654abd0f4f9eb9cae80, type: 3}
+  m_Script: {fileID: 11500000, guid: d004771dcb267bb458f0737f476b31a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
   computerSpeed: 10
-  joystick: {fileID: 0}
-  isPlayer: 0
-  offset: 0.5
+  offset: 1
 --- !u!1 &756853614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1478,8 @@ MonoBehaviour:
   speed: 20
   minDirection: 0.5
   spawnManager: {fileID: 226171973}
+  player: {fileID: 451360615}
+  computer: {fileID: 723826348}
 --- !u!54 &1222625388
 Rigidbody:
   m_ObjectHideFlags: 0
