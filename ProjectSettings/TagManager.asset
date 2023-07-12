@@ -8,6 +8,8 @@ TagManager:
   - Ball
   - PowerUp
   - Computer
+  - Racket
+  - speed
   layers:
   - Default
   - TransparentFX
