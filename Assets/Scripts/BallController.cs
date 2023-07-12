@@ -69,6 +69,15 @@ public class BallController : MonoBehaviour
             
             
         }
+        if(other.CompareTag("freeze")){
+            if(flag == 1){
+                Debug.Log("Computer freeze");
+            }
+            if(flag == -1){
+                Debug.Log("Player freeze");
+            }
+
+        }
     
     }
     private void ChooseDirection(){

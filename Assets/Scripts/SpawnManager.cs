@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     public void Spawn(){
         if(!spawned){
-            position = new Vector3(Random.Range(0f,11f), 5f, Random.Range(-9f,6f));
+            position = new Vector3(Random.Range(-5.99f,6f), 0f, Random.Range(-7.99f,8f));
             prefab = prefabs[Random.Range(0,prefabs.Length)];
             powerUp = Instantiate(prefab, position, prefab.transform.rotation );
             spawned = true;
