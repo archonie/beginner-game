@@ -7,6 +7,8 @@ public class RacketController : MonoBehaviour
     private Rigidbody rb;
     public FixedJoystick joystick;
     private bool freezed = false;
+    private bool expended = false;
+    private bool shrinked = false;
     void Start()
     {
        rb = GetComponent<Rigidbody>();
@@ -42,5 +44,29 @@ public class RacketController : MonoBehaviour
     }
     public void speedDown(){
         this.playerSpeed = 10f;
+    }
+    public void Expand(){
+        if(!expended){
+            this.transform.localScale += new Vector3(0f, 0f, 0.3f);
+            expended = true;
+            Invoke("Normalize", 3f);
+        }
+    }
+    public void Shrink(){
+        if(!shrinked){
+            this.transform.localScale -= new Vector3(0f, 0f, 0.3f);
+            shrinked = true;
+            Invoke("Normalize", 3f);
+        }
+    }
+    public void Normalize(){
+        if(shrinked){
+            this.transform.localScale += new Vector3(0f,0f, 0.3f);
+            shrinked = false;
+        }
+        if(expended){
+            this.transform.localScale -= new Vector3(0f,0f, 0.3f);
+            expended = false;
+        }
     }
 }

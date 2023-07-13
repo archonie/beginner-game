@@ -88,6 +88,26 @@ public class BallController : MonoBehaviour
                 this.sManager.DestroyObject();
             }
         }
+        if(other.CompareTag("expand")){
+            if(flag == 1){
+                this.playerController.Expand();
+                this.sManager.DestroyObject();
+            }
+            if(flag == -1){
+                this.computerController.Expand();
+                this.sManager.DestroyObject();           
+            }
+        }
+        if(other.CompareTag("shrink")){
+            if(flag == 1){
+                this.computerController.Shrink();
+                this.sManager.DestroyObject();  
+            }
+            if(flag == -1){
+                this.playerController.Shrink();
+                this.sManager.DestroyObject();  
+            }
+        }
     
     }
     private void ChooseDirection(){
@@ -114,6 +134,8 @@ public class BallController : MonoBehaviour
         this.playerController.speedDown();
         this.computerController.speedDown();
         Invoke("DelayResetBall", 1.3f);
+        this.playerController.Normalize();
+        this.computerController.Normalize();
     }
     public void DelayResetBall(){
         Go();
@@ -121,4 +143,6 @@ public class BallController : MonoBehaviour
     public void speedDown(){
         this.speed = 20f;
     }
+    
+    
 }

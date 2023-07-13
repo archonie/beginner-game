@@ -12,6 +12,8 @@ TagManager:
   - freeze
   - speedBall
   - speedRacket
+  - expand
+  - shrink
   layers:
   - Default
   - TransparentFX

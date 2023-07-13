@@ -349,9 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 1921829667141551523, guid: 4252bc8263bc4b345b85927b4b64f0d6, type: 3}
-  - {fileID: 4574520313862115391, guid: 78eed423c17dbc44e9c55502608e31e0, type: 3}
-  - {fileID: 5114218532312697120, guid: b1509b79e302b3e4d943abd62a7e4aca, type: 3}
+  - {fileID: 3263849431987278381, guid: 8df3e8805b6829d4682875313cb08f75, type: 3}
+  - {fileID: 3263849431987278381, guid: 8df3e8805b6829d4682875313cb08f75, type: 3}
+  - {fileID: 2374698256584968975, guid: 951991380d514404f99f6b714b509966, type: 3}
+  - {fileID: 2374698256584968975, guid: 951991380d514404f99f6b714b509966, type: 3}
 --- !u!4 &226171975
 Transform:
   m_ObjectHideFlags: 0
@@ -495,6 +496,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388004731009325423, guid: 8ba30c583e9114c27ba0c3ee746ab675,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388004731009325423, guid: 8ba30c583e9114c27ba0c3ee746ab675,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4388004731009325423, guid: 8ba30c583e9114c27ba0c3ee746ab675,
         type: 3}
