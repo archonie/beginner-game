@@ -6,6 +6,7 @@ public class RacketController : MonoBehaviour
     public float playerSpeed = 10f;
     private Rigidbody rb;
     public FixedJoystick joystick;
+    private bool freezed = false;
     void Start()
     {
        rb = GetComponent<Rigidbody>();
@@ -17,17 +18,23 @@ public class RacketController : MonoBehaviour
         MoveByPlayer();    
     }
     void MoveByPlayer(){
-        rb.velocity = joystick.Horizontal * playerSpeed * Vector3.right;
+        if(freezed){
+            return;
+        }
+        else{
+            rb.velocity = joystick.Horizontal * playerSpeed * Vector3.right;
+        }
+        
     }
     
     public void freezePlayer(){
-        rb.velocity = Vector3.zero;
-        this.rb = null;
+        rb.velocity = Vector3.zero; 
+        this.freezed = true;
         Invoke("unFreeze", 1.5f);
     }
    
     public void unFreeze(){
-        this.rb = GetComponent<Rigidbody>();
+        this.freezed =false;
     }
     public void speedUp(){
         this.playerSpeed = 20f;

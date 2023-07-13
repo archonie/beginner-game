@@ -7,6 +7,7 @@ public class ComputerController : MonoBehaviour
     private Rigidbody rb;
     private Transform ball;
     public float offset = 1f;
+    private bool freezed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,24 +23,29 @@ public class ComputerController : MonoBehaviour
 
     }
     void MoveByComputer(){
-        if(ball.position.x < transform.position.x + offset){
-            rb.velocity = Vector3.left * computerSpeed;
-        }
-        else if(ball.position.x > transform.position.x - offset){
-            rb.velocity = Vector3.right * computerSpeed;
+        if(freezed){
+            return;
         }
         else{
+            if(ball.position.x < transform.position.x + offset){
+            rb.velocity = Vector3.left * computerSpeed;
+            }
+            else if(ball.position.x > transform.position.x - offset){
+            rb.velocity = Vector3.right * computerSpeed;
+            }
+            else{
             rb.velocity = Vector3.zero;
+            }
         }
         
     }
     public void freezeComputer(){
         rb.velocity = Vector3.zero;
-        this.rb = null;
+        this.freezed = true;
         Invoke("unFreeze", 1.5f);       
     }
     public void unFreeze(){
-        rb = GetComponent<Rigidbody>();
+        this.freezed = false;
     }
     public void speedUp(){
         this.computerSpeed = 20f;
