@@ -32,7 +32,7 @@ public class RacketController : MonoBehaviour
     public void freezePlayer(){
         rb.velocity = Vector3.zero; 
         this.freezed = true;
-        Invoke("unFreeze", 1.5f);
+        Invoke("unFreeze", 2f);
     }
    
     public void unFreeze(){

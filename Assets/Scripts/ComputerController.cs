@@ -44,7 +44,7 @@ public class ComputerController : MonoBehaviour
     public void freezeComputer(){
         rb.velocity = Vector3.zero;
         this.freezed = true;
-        Invoke("unFreeze", 1.5f);       
+        Invoke("unFreeze", 2f);       
     }
     public void unFreeze(){
         this.freezed = false;
