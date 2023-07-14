@@ -127,6 +127,7 @@ public class BallController : MonoBehaviour
     }
     public void ResetBall(){
         Stop();
+        this.flag = 0;
         this.transform.position = startPosition;
         this.sManager.DestroyObject();
         this.computerController.unFreeze();

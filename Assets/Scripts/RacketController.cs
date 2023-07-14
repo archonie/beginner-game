@@ -36,7 +36,7 @@ public class RacketController : MonoBehaviour
     }
    
     public void unFreeze(){
-        this.freezed =false;
+        this.freezed = false;
     }
     public void speedUp(){
         this.playerSpeed = 20f;
